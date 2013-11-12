@@ -1,0 +1,122 @@
+/**
+ *
+ * Simple module to render a nice image carousel mobile friendly (it could be either full screen)
+ *
+ *  <div class="GICarousel GI_C_wrapper">
+ *      <ul class="GI_IC_items">
+ *          <li>
+ *              <img src="images/mage.jpg" />
+ *          </li>
+ *          <li>
+ *              <img src="images/mage.jpg" />
+ *          </li>
+ *          <li>
+ *              <img src="images/mage.jpg" />
+ *          </li>
+ *      </ul>
+ *  </div>
+ * 
+ */
+.GICarousel {
+  padding: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  background: $grayDark;
+  z-index: 99;
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: none;
+  }
+  .GI_C_close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+    @include square(50px);
+  }
+  .GI_C_prev, .GI_C_next {
+    position: absolute;
+    background: white;
+    top: 50%;
+    margin: -15px 0 0 0;
+    @include square(30px);
+  }
+  .GI_C_prev {
+    left: 0;
+  }
+  .GI_C_next {
+    right: 0;
+  }
+  &.GI_C_wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    /*
+    *
+    * Slides container
+    *
+    */
+    ul.GI_C_items {
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      &.animated {
+        @include transition(left 0.4s ease-in-out);
+        .parallax {
+          @include transition(margin 0.8s cubic-bezier(0.19, 1, 0.22, 1));
+        }
+      }
+      /*
+      *
+      * Single slide
+      *
+      */
+      li {
+        height: 100%;
+        width: 100%;
+        display: block;
+        float: left;
+        z-index: 100;
+        position: relative;
+        &.current {
+          z-index: 105;
+        }
+      }
+    }
+    /*
+    *
+    * Slide paginator
+    *
+    */
+    ul.GI_C_paginator {
+      height: 48px;
+      bottom: 0;
+      width: 100%;
+      display: block;
+      position: absolute;
+      text-align: center;
+      z-index: 110;
+      @include translucent-background($black, 0.7);
+      li {
+        @include square(13px);
+        @include border-radius(100%);
+        cursor: pointer;
+        margin: 18px;
+        display: inline-block;
+        @include ie7-inline-block;
+        background: $white;
+        &.active {
+          background: $orange;
+        }
+      }
+    }
+  }
+}
