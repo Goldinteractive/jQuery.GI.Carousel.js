@@ -656,7 +656,9 @@
             this.currentX = null;
             this.carouselIndex = null;
             this.unbindAll();
-            this.$list.attr('style', '');
+            // probably this could be useful sometimes
+            // I'll keep this commented 
+            //this.$list.attr('style', '');
             this.$list.removeClass('animated');
             if (this.$itemsClone)
                 this.$itemsClone.remove();
