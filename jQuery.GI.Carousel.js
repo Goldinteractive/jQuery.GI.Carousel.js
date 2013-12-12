@@ -425,7 +425,7 @@
             // Add the classes needed to style the gallery
             this.$el.addClass("GI_C_wrapper");
             this.$list.addClass("GI_C_items");
-            if (options.pagination && enoughItems)
+            if (options.pagination)
                 _buildPagination.call(this);
 
             if (options.arrows) {
