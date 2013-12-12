@@ -1,13 +1,14 @@
 /*!
  *
- * Version 0.2.0
+ * Version 0.2.1
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2013
  * Author: Gianluca Guarini
  *
  */
 /*global Modernizr $*/
-;(function(document, window, $document, $window, $body, $) {
+;
+(function(document, window, $document, $window, $body, $) {
     "use strict";
 
     $.support.transition = (function() {
@@ -412,15 +413,19 @@
          */
 
         this.init = function() {
+            // not enough items to init the carousel
+            if (this.$items.length <= 1) return;
 
             this.currentIndex = options.startId < 0 ? 0 : options.startId;
             isMoving = false;
 
             execCallback(options.onBeforeInit);
+
+
             // Add the classes needed to style the gallery
             this.$el.addClass("GI_C_wrapper");
             this.$list.addClass("GI_C_items");
-            if (options.pagination)
+            if (options.pagination && enoughItems)
                 _buildPagination.call(this);
 
             if (options.arrows) {
@@ -443,11 +448,12 @@
                 _updateCarousel.call(this);
             }
 
-
             this.bindAll();
 
             if (options.autoSlideInterval)
                 this.startAutoslide();
+
+
 
             execCallback(options.onCarouselReady);
 
@@ -517,7 +523,7 @@
 
             this.autoslideTimer = window.setInterval(function() {
                 self.next();
-            }, options.autoSlideInterval || timeout);
+            }, options.autoSlideInterval ||  timeout);
         };
 
         this.stopAutoslide = function() {
@@ -657,7 +663,7 @@
             this.carouselIndex = null;
             this.unbindAll();
             // probably this could be useful sometimes
-            // I'll keep this commented 
+            // I'll keep this commented
             //this.$list.attr('style', '');
             this.$list.removeClass('animated');
             if (this.$itemsClone)
