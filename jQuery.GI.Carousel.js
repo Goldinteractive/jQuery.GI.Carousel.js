@@ -414,7 +414,10 @@
 
         this.init = function() {
             // not enough items to init the carousel
-            if (this.$items.length <= 1) return;
+            if (this.$items.length <= 1) {
+                this.setViewport();
+                return this;
+            }
 
             this.currentIndex = options.startId < 0 ? 0 : options.startId;
             isMoving = false;
