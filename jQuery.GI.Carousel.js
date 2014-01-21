@@ -1,13 +1,13 @@
 /*!
  *
- * Version 0.2.1
+ * Version 0.2.2
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
- * Copyright Gold Interactive 2013
+ * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
  *
  */
+/* jshint curly:false*/
 /*global Modernizr $*/
-;
 (function(document, window, $document, $window, $body, $) {
     "use strict";
 
@@ -424,10 +424,15 @@
 
             execCallback(options.onBeforeInit);
 
-
             // Add the classes needed to style the gallery
             this.$el.addClass("GI_C_wrapper");
             this.$list.addClass("GI_C_items");
+            if (options.carousel) {
+                // variable needed only for the carousel
+                halfItemsCount = ~~ (this.itemsLength / 2);
+                _buildCarousel.call(this);
+                _updateCarousel.call(this);
+            }
             if (options.pagination)
                 _buildPagination.call(this);
 
@@ -444,12 +449,7 @@
             // setting the viewport
             this.setViewport();
 
-            if (options.carousel) {
-                // variable needed only for the carousel
-                halfItemsCount = ~~ (this.itemsLength / 2);
-                _buildCarousel.call(this);
-                _updateCarousel.call(this);
-            }
+
 
             this.bindAll();
 
