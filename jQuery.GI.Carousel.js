@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.2
+ * Version 0.2.3
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -75,6 +75,8 @@
                 animationSpeed: 300,
                 fullscreen: false,
                 startId: 0,
+                slidesWidthRatio: 1,
+                slidesHeightRatio: 1,
                 autoSlideInterval: 0,
                 swipeSensibility: 100,
                 nextButtonClass: '',
@@ -500,8 +502,8 @@
             _updateCurrentClass.call(this);
             // setting the size of every single item
             this.$items.css({
-                width: viewportSize.width,
-                height: viewportSize.height
+                width: viewportSize.width * options.slidesWidthRatio,
+                height: viewportSize.height * options.slidesHeightRatio
             });
 
             if (this.$itemsClone)
