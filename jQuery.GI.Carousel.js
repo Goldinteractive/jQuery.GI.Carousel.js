@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.2
+ * Version 0.2.3
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -299,7 +299,8 @@
 
             isMoving = false;
 
-            _updateCurrentClass.call(this);
+            if (options.carousel)
+                _updateCurrentClass.call(this);
 
             execCallback(options.onItemChange, this.currentIndex);
         };
@@ -587,6 +588,8 @@
                 isMoving = true;
             else
                 isMoving = false;
+
+            _updateCurrentClass.call(this);
 
             this.$list.addClass('animated').stop(true, false)[csstransitions ? "css" : "animate"]({
                 "left": this.currentX
