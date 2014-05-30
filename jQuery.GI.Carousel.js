@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.6
+ * Version 0.2.7
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -382,7 +382,7 @@
                 this.next();
             } else if (e.keyCode === 37) {
                 this.prev();
-            } else if (e.keyCode === 27) {
+            } else if (e.keyCode === 27 && options.closebutton) {
                 this.destroy();
             }
         };
