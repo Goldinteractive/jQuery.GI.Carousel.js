@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.3
+ * Version 0.2.4
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -75,6 +75,8 @@
                 animationSpeed: 300,
                 fullscreen: false,
                 startId: 0,
+                resizeDebounce:300,
+                slidesOffsetRight:0,
                 autoSlideInterval: 0,
                 swipeSensibility: 100,
                 nextButtonClass: '',
@@ -478,7 +480,7 @@
             });
             // caching the viewport size
             viewportSize = {
-                width: options.fullscreen ? $body.width() : this.$el.width(),
+                width: (options.fullscreen ? $body.width() : this.$el.width()) - options.slidesOffsetRight,
                 height: options.fullscreen ? $body.height() : this.$el.height()
             };
 
@@ -642,7 +644,7 @@
             this.$el.on(eventsNames.mouseleave + eventsNamespace, ".GI_C_items", $.proxy(_onMouseUp, this));
 
             if (options.responsive)
-                $window.on("resize" + eventsNamespace + " orientationchange" + eventsNamespace, $.proxy(debounce, this, this.setViewport, 300));
+                $window.on("resize" + eventsNamespace + " orientationchange" + eventsNamespace, $.proxy(debounce, this, this.setViewport, options.resizeDebounce));
             if (options.keyboardNavigation)
                 $window.on("keydown" + eventsNamespace, $.proxy(_onKeypress, this));
 
