@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.5
+ * Version 0.2.6
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -432,7 +432,7 @@
             this.$list.addClass("GI_C_items");
             if (options.carousel) {
                 // variable needed only for the carousel
-                halfItemsCount = Math.abs(Math.ceil(this.itemsLength / 2));
+                halfItemsCount = ~~ (this.itemsLength / 2);
                 _buildCarousel.call(this);
                 _updateCarousel.call(this);
             }
@@ -491,14 +491,12 @@
             });
 
             this.totalWidth = viewportSize.width * ((options.carousel ? (this.$items.length * 2) : this.$items.length) + 1);
-            // ok i know this sucks..
-            // probably one day I will simplify this
+
             this.currentX = (
-                (this.$itemsClone && this.$itemsClone.data('position') === 'before') &&
-                this.currentIndex + 1 !== this.itemsLength ?
-                -this.currentIndex + this.itemsLength :
+                (this.$itemsClone && this.$itemsClone.data('position') === 'before' && this.currentIndex + 1 !== this.itemsLength ) ?
+                -(this.currentIndex + this.itemsLength) :
                 -this.currentIndex
-                ) * viewportSize.width;
+            ) * viewportSize.width;
 
             // setting the size of the list in order to contain all its items
             this.$list.removeClass('animated').css({
