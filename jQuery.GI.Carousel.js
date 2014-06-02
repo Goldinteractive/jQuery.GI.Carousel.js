@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.7
+ * Version 0.2.8
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -21,7 +21,8 @@
                     'MozTransition': 'transitionend',
                     'OTransition': 'oTransitionEnd otransitionend',
                     'transition': 'transitionend'
-                }, name;
+                },
+                name;
 
             for (name in transEndEventNames) {
                 if (el.style[name] !== undefined) {
@@ -75,8 +76,8 @@
                 animationSpeed: 300,
                 fullscreen: false,
                 startId: 0,
-                resizeDebounce:300,
-                slidesOffsetRight:0,
+                resizeDebounce: 300,
+                slidesOffsetRight: 0,
                 autoSlideInterval: 0,
                 swipeSensibility: 100,
                 nextButtonClass: '',
@@ -301,8 +302,8 @@
 
             isMoving = false;
 
-            if (options.carousel)
-                _updateCurrentClass.call(this);
+
+            _updateCurrentClass.call(this);
 
             execCallback(options.onItemChange, this.currentIndex);
         };
@@ -459,7 +460,7 @@
             if (options.autoSlideInterval)
                 this.startAutoslide();
 
-
+            _updateCurrentClass.call(this);
 
             execCallback(options.onCarouselReady);
 
@@ -493,7 +494,7 @@
             this.totalWidth = viewportSize.width * ((options.carousel ? (this.$items.length * 2) : this.$items.length) + 1);
 
             this.currentX = (
-                (this.$itemsClone && this.$itemsClone.data('position') === 'before' && this.currentIndex + 1 !== this.itemsLength ) ?
+                (this.$itemsClone && this.$itemsClone.data('position') === 'before' && this.currentIndex + 1 !== this.itemsLength) ?
                 -(this.currentIndex + this.itemsLength) :
                 -this.currentIndex
             ) * viewportSize.width;
