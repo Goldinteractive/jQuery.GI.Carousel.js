@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.8
+ * Version 0.2.9
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -79,6 +79,7 @@
                 resizeDebounce: 300,
                 slidesOffsetRight: 0,
                 autoSlideInterval: 0,
+                stopAutoSlideOnInteraction:true,
                 swipeSensibility: 100,
                 nextButtonClass: '',
                 prevButtonClass: '',
@@ -539,7 +540,7 @@
         };
 
         this.stopAutoslide = function() {
-            if (this.autoslideTimer)
+            if (this.autoslideTimer && options.stopAutoSlideOnInteraction)
                 window.clearInterval(this.autoslideTimer);
         };
 
