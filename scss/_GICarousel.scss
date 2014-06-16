@@ -86,6 +86,7 @@
         float: left;
         z-index: 100;
         position: relative;
+        overflow:hidden;
         &.current {
           z-index: 105;
         }
