@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.2.9
+ * Version 0.3.0
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -73,6 +73,7 @@
                 controlsWrapper: null,
                 closebutton: false,
                 keyboardNavigation: true,
+                stopScroll: false,
                 animationSpeed: 300,
                 fullscreen: false,
                 startId: 0,
@@ -110,6 +111,7 @@
             keyboardKeys = [33, 34, 35, 36, 37, 38, 39, 40, 27],
             // If Modernizr is undefined we give the priority to the javascript animations
             csstransitions = $.support.transition,
+            animationDelayTimer = null,
             eventsNamespace = ".GICarousel" + GI_C_ID,
             halfItemsCount = 0,
             options = $.extend(defaultOptions, myOptions);
@@ -314,13 +316,12 @@
             if (!mouse.isDown) {
                 return false;
             }
-            var cachedY = mouse.deltaY;
 
             mouse.deltaX = ~~ (getPointerEvent(e).pageX - mouse.cachedX);
             mouse.deltaY = ~~ (getPointerEvent(e).pageY - mouse.cachedY);
 
-            if (Math.abs(mouse.deltaY) < options.swipeSensibility) {
-                e.preventDefault(); // TODO: try to understand why this does not work on touch devices
+            if (options.stopScroll) {
+                e.preventDefault();
             }
 
             this.$list.css({
@@ -600,9 +601,15 @@
 
             _updateCurrentClass.call(this);
 
-            this.$list.addClass('animated').stop(true, false)[csstransitions ? "css" : "animate"]({
-                "left": this.currentX
-            }, options.animationSpeed, $.proxy(_onItemChange, this, this.currentIndex));
+            if (animationDelayTimer) {
+                window.clearTimeout(animationDelayTimer);
+            }
+
+            animationDelayTimer = window.setTimeout($.proxy(function(){
+                this.$list.stop(true, false)[csstransitions ? "css" : "animate"]({
+                    "left": this.currentX
+                }, options.animationSpeed, $.proxy(_onItemChange, this, this.currentIndex));
+            },this),33);
 
         };
 
