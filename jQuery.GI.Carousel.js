@@ -605,7 +605,6 @@
             }
 
             animationDelayTimer = window.setTimeout($.proxy(function(){
-                console.log('s');
                 this.$list.stop(true, false).addClass('animated')[csstransitions ? "css" : "animate"]({
                     "left": this.currentX
                 }, options.animationSpeed, $.proxy(_onItemChange, this, this.currentIndex));
