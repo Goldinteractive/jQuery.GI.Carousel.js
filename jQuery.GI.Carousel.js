@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.3.0
+ * Version 0.3.1
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
@@ -121,7 +121,6 @@
          * PUBLIC VAR
          *
          */
-        this.VERSION = "0.2.0";
         this.$el = $el;
         this.$controlsWrapper = options.controlsWrapper || this.$el;
         this.$list = $("> ul", this.$el).eq(0);
@@ -606,7 +605,8 @@
             }
 
             animationDelayTimer = window.setTimeout($.proxy(function(){
-                this.$list.stop(true, false)[csstransitions ? "css" : "animate"]({
+                console.log('s');
+                this.$list.stop(true, false).addClass('animated')[csstransitions ? "css" : "animate"]({
                     "left": this.currentX
                 }, options.animationSpeed, $.proxy(_onItemChange, this, this.currentIndex));
             },this),33);
