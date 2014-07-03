@@ -19,6 +19,7 @@ describe('jQuery.GI.Carousel (simple) tests', function () {
 
   it('The next, prev,moveToSlide methods work as expected', function (done) {
   	var callback = sinon.spy();
+  	this.timeout(10000);
     carousel = $('.GICarousel').GICarousel({
     	carousel:true,
     	onItemChange: callback,
@@ -26,19 +27,20 @@ describe('jQuery.GI.Carousel (simple) tests', function () {
     		var self = this;
     		setTimeout(function(){
     			self.next();
-    		},100);
+    		},1000);
 
-        setTimeout($.proxy(this.next, this), 650);
+        setTimeout($.proxy(this.next, this), 2000);
         setTimeout(function(){
         	self.moveToSlide(4);
         	expect(self.currentIndex).to.be.equal(4);
 
-        }, 1300);
+        }, 3000);
         setTimeout(function () {
+        	console.log(callback);
+        	expect(callback).to.have.calledThrice;
         	expect($('.GICarousel ul li.current').data('index')).to.be.equal(4);
-          expect(callback).to.have.calledThrice;
           done();
-        }, 1950);
+        }, 5000);
     	}
     });
   });
