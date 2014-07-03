@@ -20,7 +20,6 @@ module.exports = (grunt) ->
     "mocha"
   ]
   grunt.registerTask "test", [
-    "mocha"
     "connect"
     "saucelabs-mocha"
   ]

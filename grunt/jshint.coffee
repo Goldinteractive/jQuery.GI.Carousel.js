@@ -1,3 +1,3 @@
 module.exports = all: [
-  "jQuery.GI.Carousel.js"
+  'jQuery.GI.Carousel.js'
 ]

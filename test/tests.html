@@ -3,10 +3,32 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <link rel="stylesheet" href="css/mocha.css" type="text/css"  />
-
+  <link rel="stylesheet" href="../assets/css/GICarousel.css" type="text/css"  />
+  <style>
+  /**
+   *  Hide the markup to see the tests
+   */
+   .GICarousel {
+     visibility:hidden!important;
+   }
+  </style>
 </head>
 <body>
+
+  <div class="GICarousel GI_C_wrapper" >
+    <ul class="GI_IC_items">
+      <li style="background-image:url('http://lorempixel.com/g/600/600?1')"></li>
+      <li style="background-image:url('http://lorempixel.com/g/600/600?2')"></li>
+      <li style="background-image:url('http://lorempixel.com/g/600/600?3')"></li>
+      <li style="background-image:url('http://lorempixel.com/g/600/600?4')"></li>
+      <li style="background-image:url('http://lorempixel.com/g/600/600?5')"></li>
+      <li style="background-image:url('http://lorempixel.com/g/600/600?6')"></li>
+      <li style="background-image:url('http://lorempixel.com/g/600/600?7')"></li>
+    </ul>
+  </div>
+
   <div id="mocha"></div>
+
   <!-- Vendor -->
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <!-- mocha -->
@@ -22,7 +44,6 @@
   </script>
   <script src="../jQuery.GI.Carousel.js"></script>
   <script src="js/tests.js"></script>
-
   <!-- run mocha -->
   <script>
     window.onload = function () {

@@ -8,6 +8,9 @@
   "browserName": "safari",
   "platform": "Windows 7"
 }, {
+  "browserName": "safari",
+  "platform": "OS X 10.9"
+}, {
   "browserName": "internet explorer",
   "version": "10",
   "platform": "Windows 8"
@@ -25,6 +28,16 @@
   "deviceName": "iPad",
   "browserName": "ipad",
   "version": "7.0"
+},{
+  "platform": "OS X 10.9",
+  "deviceName": "iPhone",
+  "browserName": "iphone",
+  "version": "7.1"
+}, {
+  "platform": "OS X 10.9",
+  "deviceName": "iPad",
+  "browserName": "ipad",
+  "version": "7.1"
 }, {
   "platform": "Linux",
   "deviceName": "Android",
