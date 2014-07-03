@@ -17,7 +17,6 @@ module.exports = (grunt) ->
     "jshint"
     "uglify"
     "compass"
-    "mocha"
   ]
   grunt.registerTask "test", [
     "connect"
