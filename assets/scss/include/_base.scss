@@ -1,0 +1,42 @@
+html {
+    min-height: 100%;
+
+    border: 10px solid black;
+
+	@include box-sizing(border-box);
+}
+body {
+    font: 1.3em 'Arial';
+
+    margin: 0;
+    padding: 5% 5% 0;
+}
+.viewport {
+    position: relative;
+
+    width: 80%;
+    margin: 0 auto;
+
+    text-align: center;
+}
+.demo {
+    position: relative;
+
+    height: 400px;
+    margin: 5%;
+}
+pre {
+    text-align: left;
+}
+
+.GI_C_prev {
+ 	&:after {
+ 		content: '❮';
+ 	}
+}
+.GI_C_next {
+ 	&:after {
+ 		content: '❯';
+ 	}
+
+}
