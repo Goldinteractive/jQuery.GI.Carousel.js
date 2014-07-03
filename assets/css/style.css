@@ -8,26 +8,43 @@ html {
 }
 
 body {
-  font: 1.3em 'Arial';
+  font-size: 1.3em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 200;
   margin: 0;
   padding: 5% 5% 0;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
 }
 
 .viewport {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  text-align: center;
 }
 
 .demo {
   position: relative;
-  height: 400px;
-  margin: 5%;
+  height: 600px;
+}
+.demo ul li {
+  background-size: cover;
+  background-position: center;
 }
 
 pre {
   text-align: left;
+}
+
+.GI_C_prev, .GI_C_next {
+  line-height: 0;
+}
+.GI_C_prev:after, .GI_C_next:after {
+  position: absolute;
+  top: 14px;
+  left: 8px;
 }
 
 .GI_C_prev:after {
@@ -147,6 +164,7 @@ pre {
   position: absolute;
   text-align: center;
   z-index: 110;
+  background: rgba(0, 0, 0, 0.2);
 }
 .GICarousel.GI_C_wrapper ul.GI_C_paginator li {
   width: 13px;
