@@ -36,7 +36,6 @@ describe('jQuery.GI.Carousel (simple) tests', function () {
 
         }, 3000);
         setTimeout(function () {
-        	console.log(callback);
         	expect(callback).to.have.calledThrice;
         	expect($('.GICarousel ul li.current').data('index')).to.be.equal(4);
           done();
