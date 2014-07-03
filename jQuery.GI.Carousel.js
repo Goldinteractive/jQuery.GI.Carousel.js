@@ -55,7 +55,7 @@
         defaultOptions = {
           // Callbacks API
           onBeforeInit: null,
-          onCarouselReady: null,
+          onReady: null,
           onViewPortUpdate: null,
           onItemChange: null,
           onDestroy: null,
@@ -480,7 +480,8 @@
 
           _updateCurrentClass.call(this);
 
-          execCallback(options.onCarouselReady);
+          execCallback(options.onCarouselReady); // deprecated
+          execCallback(options.onReady);
 
           GI_C_ID++;
         };

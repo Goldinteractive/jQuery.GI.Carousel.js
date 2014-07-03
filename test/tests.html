@@ -9,7 +9,7 @@
    *  Hide the markup to see the tests
    */
    .GICarousel {
-     visibility:hidden!important;
+     /*visibility:hidden!important;*/
    }
   </style>
 </head>
@@ -17,13 +17,13 @@
 
   <div class="GICarousel GI_C_wrapper" >
     <ul class="GI_IC_items">
-      <li style="background-image:url('http://lorempixel.com/g/600/600?1')"></li>
-      <li style="background-image:url('http://lorempixel.com/g/600/600?2')"></li>
-      <li style="background-image:url('http://lorempixel.com/g/600/600?3')"></li>
-      <li style="background-image:url('http://lorempixel.com/g/600/600?4')"></li>
-      <li style="background-image:url('http://lorempixel.com/g/600/600?5')"></li>
-      <li style="background-image:url('http://lorempixel.com/g/600/600?6')"></li>
-      <li style="background-image:url('http://lorempixel.com/g/600/600?7')"></li>
+      <li data-index="0" style="background-image:url('http://lorempixel.com/g/600/600?1')"></li>
+      <li data-index="1" style="background-image:url('http://lorempixel.com/g/600/600?2')"></li>
+      <li data-index="2" style="background-image:url('http://lorempixel.com/g/600/600?3')"></li>
+      <li data-index="3" style="background-image:url('http://lorempixel.com/g/600/600?4')"></li>
+      <li data-index="4" style="background-image:url('http://lorempixel.com/g/600/600?5')"></li>
+      <li data-index="5" style="background-image:url('http://lorempixel.com/g/600/600?6')"></li>
+      <li data-index="6" style="background-image:url('http://lorempixel.com/g/600/600?7')"></li>
     </ul>
   </div>
 
@@ -34,6 +34,8 @@
   <!-- mocha -->
   <script src="js/vendor/mocha.js"></script>
   <script src="js/vendor/chai.js" ></script>
+  <script src="js/vendor/sinon.js" ></script>
+  <script src="js/vendor/sinon-chai.js" ></script>
   <script src="js/vendor/simulant.js"></script>
   <script>
     mocha.setup('bdd');
@@ -46,7 +48,7 @@
   <script src="js/tests.js"></script>
   <!-- run mocha -->
   <script>
-    window.onload = function () {
+    $(window).on('load',function () {
       var runner;
 
       runner = mocha.run();
@@ -74,7 +76,7 @@
 
       runner.on('fail', logFailure);
 
-    };
+    });
     </script>
   </body>
 </html>
