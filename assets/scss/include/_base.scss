@@ -69,21 +69,3 @@ footer {
         text-decoration: none;
     }
 }
-.GI_C_prev,.GI_C_next{
-    line-height: 0;
-    &:after {
-        position: absolute;
-        top:14px;
-        left:8px;
-    }
-}
-.GI_C_prev {
- 	&:after {
- 		content: '❮';
- 	}
-}
-.GI_C_next {
- 	&:after {
- 		content: '❯';
- 	}
-}

@@ -88,6 +88,35 @@ footer a {
   content: '❯';
 }
 
+.parallax p {
+  padding: 10px;
+  display: inline-block;
+  font-size: 3em;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+}
+.parallax .square {
+  width: 160px;
+  height: 160px;
+  margin: 10px;
+  float: left;
+  background-size: cover;
+  background-position: center;
+}
+.parallax .square.big {
+  width: 260px;
+  height: 260px;
+}
+
+.demo {
+  position: relative;
+  height: 600px;
+}
+.demo ul li {
+  background-size: cover;
+  background-position: center;
+}
+
 .GICarousel {
   padding: 0;
   top: 0;

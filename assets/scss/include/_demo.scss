@@ -1,0 +1,53 @@
+.GI_C_prev,.GI_C_next{
+    line-height: 0;
+    &:after {
+        position: absolute;
+        top:14px;
+        left:8px;
+    }
+}
+.GI_C_prev {
+ 	&:after {
+ 		content: '❮';
+ 	}
+}
+.GI_C_next {
+ 	&:after {
+ 		content: '❯';
+ 	}
+}
+
+.parallax {
+    p {
+        padding:10px;
+        display: inline-block;
+        font-size: 3em;
+        color:white;
+        background: rgba(black,0.2);
+    }
+    .square {
+        width:160px;
+        height: 160px;
+        margin:10px;
+        float:left;
+        background-size: cover;
+        background-position: center;
+        &.big {
+            width:260px;
+            height: 260px;
+        }
+    }
+}
+
+.demo {
+    position: relative;
+
+    height: 600px;
+
+    ul {
+        li {
+            background-size: cover;
+            background-position: center;
+        }
+    }
+}

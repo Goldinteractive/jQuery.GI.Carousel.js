@@ -466,6 +466,11 @@
             this.$closebutton = $('.GI_C_items', this.$controlsWrapper);
           }
 
+
+          if (options.parallax) {
+            _doParallax.call(this);
+          }
+
           // setting the viewport
           this.setViewport();
 
