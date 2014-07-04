@@ -1,6 +1,6 @@
 /*!
  *
- * Version 0.3.2
+ * Version 0.3.3
  * This class could be used to create image carousels optimized for Mobile Phones and Tablets
  * Copyright Gold Interactive 2014
  * Author: Gianluca Guarini
