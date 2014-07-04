@@ -33,15 +33,6 @@ a {
   margin: 0 auto;
 }
 
-.demo {
-  position: relative;
-  height: 600px;
-}
-.demo ul li {
-  background-size: cover;
-  background-position: center;
-}
-
 pre {
   text-align: left;
 }

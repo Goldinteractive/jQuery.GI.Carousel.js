@@ -31,7 +31,13 @@ describe('Core Tests', function () {
     expect(carousel).is.not.undefined;
   });
 
-  it('The public api created and the callback get called', function () {
+  if('All the public methods are available',function(){
+    $.each(publicMethods, function (i, method) {
+       expect(carousel[method]).to.be.a('function');
+    });
+  });
+
+  it('The public api has been created and the callbacks get called', function () {
     $.each(callbacks, function (i, callback) {
        expect(callback).to.have.been.called;
     });
