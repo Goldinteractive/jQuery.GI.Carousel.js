@@ -103,7 +103,41 @@ $('.demo1').GICarousel({
 $('.demo2').GICarousel({
   arrows:true,
   pagination:true,
-  keyboardNavigation:true
+  keyboardNavigation:true,
+  carousel:true
+});
+
+</code></pre>
+<h2 id="demo3">Parallax Demo</h2>
+    <div class="demo">
+      <div class="GICarousel demo3 GI_C_wrapper">
+        <ul class="GI_IC_items">
+          <li style="background-image:url('assets/img/blurred.jpg')">
+            <div class="parallax">
+              <p>;) HTML content</p>
+            </div>
+          </li>
+          <li style="background-image:url('assets/img/blurred.jpg')">
+            <div class="parallax">
+              <div class="square" style="background-image:url('http://lorempixel.com/200/200?11')"></div>
+              <div class="square" style="background-image:url('http://lorempixel.com/200/200?12')"></div>
+              <div class="square" style="background-image:url('http://lorempixel.com/200/200?13')"></div>
+              <div class="square" style="background-image:url('http://lorempixel.com/200/200?14')"></div>
+            </div>
+          </li>
+          <li style="background-image:url('assets/img/blurred.jpg')">
+            <div class="parallax">
+              <div class="square big" style="background-image:url('http://lorempixel.com/200/200?15')"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <pre class="javascript"><code>
+$('.demo3').GICarousel({
+  arrows:true,
+  pagination:true,
+  parallax:true
 });
 
 </code></pre>
@@ -202,7 +236,13 @@ var carousel = $('div.carousel').GICarousel({
   $('.demo2').GICarousel({
       arrows:true,
       pagination:true,
-      keyboardNavigation:true
+      keyboardNavigation:true,
+      carousel:true
+  });
+  $('.demo3').GICarousel({
+    arrows:true,
+    pagination:true,
+    parallax:true
   });
   hljs.initHighlightingOnLoad();
 </script>

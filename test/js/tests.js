@@ -1,5 +1,5 @@
 var publicMethods = [
-	'setViewport',
+  'setViewport',
   'startAutoslide',
   'stopAutoslide',
   'moveToSlide',
@@ -9,77 +9,57 @@ var publicMethods = [
   'unbindAll'
 ];
 
-describe('jQuery.GI.Carousel (simple) tests', function () {
-
-  var carousel;
+describe('Core Tests', function () {
+  var callbacks = [sinon.spy(), sinon.spy(), sinon.spy()],
+  		destroyCallback = sinon.spy(),
+  		onItemChangeCallback =  sinon.spy(),
+  		itemLenght = $('.GICarousel ul li').length,
+  		carousel = $('.GICarousel').GICarousel({
+  			onBeforeInit: callbacks[0],
+  			onReady: callbacks[1],
+  			onViewPortUpdate: callbacks[2],
+  			onDestroy: destroyCallback,
+  			onItemChange: onItemChangeCallback,
+  			carousel:true
+  		});
 
   it('$.fn.GICarousel function exsists', function () {
     expect($.fn.GICarousel).is.not.undefined;
   });
 
-  it('The next, prev,moveToSlide methods work as expected', function (done) {
-  	var callback = sinon.spy();
-    carousel = $('.GICarousel').GICarousel({
-    	carousel:true,
-    	onItemChange: callback,
-    	onReady: function () {
-    		var self = this;
-    		setTimeout(function(){
-    			self.next();
-    		},100);
-
-        setTimeout($.proxy(this.next, this), 650);
-        setTimeout(function(){
-        	self.moveToSlide(4);
-        	expect(self.currentIndex).to.be.equal(4);
-
-        }, 1300);
-        setTimeout(function () {
-        	expect($('.GICarousel ul li.current').data('index')).to.be.equal(4);
-          expect(callback).to.have.calledThrice;
-          done();
-        }, 1950);
-    	}
-    });
-  });
-
-  it('the carousel gets created', function () {
-    carousel = $('.GICarousel').GICarousel();
+  it('the carousel instance gets created', function () {
     expect(carousel).is.not.undefined;
   });
 
-
-
   it('The public api created and the callback get called', function () {
-  	var callbacks = [sinon.spy(),sinon.spy()],
-    carousel = $('.GICarousel').GICarousel({
-    	onBeforeInit: callbacks[0],
-    	onReady: function(){
-    		$.each(callbacks,function(i,callback){
-		    	expect(callback).to.have.been.called;
-		    });
-    	},
-    	onViewPortUpdate: callbacks[1]
+    $.each(callbacks, function (i, callback) {
+       expect(callback).to.have.been.called;
     });
+  });
+
+  it('The next, prev,moveToSlide methods work as expected', function (done) {
+
+    this.timeout(10000);
+
+    setTimeout($.proxy(carousel.next, carousel), 1000);
+    setTimeout($.proxy(carousel.next, carousel), 2000);
+    setTimeout(function () {
+      carousel.moveToSlide(4);
+      expect(carousel.currentIndex).to.be.equal(4);
+    }, 3000);
+    setTimeout(function () {
+      expect(onItemChangeCallback).to.have.calledThrice;
+      expect($('.GICarousel ul li.current').data('index')).to.be.equal(4);
+      done();
+    }, 5000);
 
   });
 
-  it('The destroy method works as expected', function (done) {
-  	var itemLenght = $('.GICarousel ul li').length;
-    carousel = $('.GICarousel').GICarousel({
-    	carousel:true,
-    	onDestroy: done
-    });
+  it('The destroy method works as expected', function () {
     expect($('.GICarousel ul li')).length.to.be(itemLenght * 2);
     carousel.destroy();
-    carousel = null;
+    expect(destroyCallback).to.have.been.called;
     expect($('.GICarousel ul li')).length.to.be(itemLenght);
-  });
-
-  afterEach(function () {
-    if (carousel)
-      carousel.destroy();
-    carousel = null;
   });
 
 });
