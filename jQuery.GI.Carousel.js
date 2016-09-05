@@ -435,6 +435,11 @@
           // not enough items to init the carousel
           if (this.$items.length <= 1) {
             this.setViewport();
+
+            if (options.responsive) {
+              $window.on("resize" + eventsNamespace + " orientationchange" + eventsNamespace, $.proxy(debounce, this, this.setViewport, options.resizeDebounce));
+            }
+
             return this;
           }
 
